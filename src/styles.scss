@@ -1,0 +1,163 @@
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../node_modules/font-awesome/css/font-awesome.css';
+
+$historyGreen: #28512f;
+$historyLightGreen: #94bc7d;
+$historyAqua: #149F9C;
+$historyDarkAqua: #007771;
+$historyPink: #DD74A6;
+$historyBurgundy: #873C6D;
+$historyPurple: #694477;
+
+// HEADER AND FOOTER STYLES
+
+footer {
+  background: #333333;
+  color: #FFFFFF;
+
+  a {
+    color: $historyLightGreen;
+    &:hover {
+      color: $historyAqua;
+    }
+  }
+
+}
+
+.header-divider {
+  border-bottom: solid #000000 6px;
+}
+
+.footer-divider {
+  border-top: solid #000000 6px;
+}
+
+// RESPONSIVE TEXT ===================
+
+html {
+  font-size: 12px;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 20px;
+  }
+}
+
+// CUSTOM BUTTONS, ALERT AND BACKGROUNDS ========
+
+.backgroundDarkAqua {
+  background: $historyDarkAqua;
+}
+
+.badge-featured {
+  background: $historyBurgundy;
+}
+
+.alert-grey {
+  background: #ddd;
+  color: #000;
+}
+
+.btn-purple {
+  background: $historyBurgundy;
+  color: #ffffff;
+
+  &:hover {
+    background: $historyPurple;
+    color: #ffffff;
+  }
+}
+
+.btn-green {
+  background: $historyLightGreen;
+  color: #fff;
+  &:hover {
+    color: #fff;
+    background: $historyGreen;
+  }
+}
+
+.btn-aqua {
+  background: $historyAqua;
+  color: #ffffff;
+
+  &:hover {
+    background: $historyDarkAqua;
+    color: #ffffff;
+  }
+}
+
+// COLOURED BAR =========
+
+.bar-container {
+  display: flex;
+  height: 5px;
+}
+
+.bar-purple {
+  flex: 1;
+  width: 25%;
+  background: $historyPurple;
+}
+
+.bar-burgundy {
+  flex: 1;
+  width: 25%;
+  background: $historyBurgundy;
+}
+
+.bar-green {
+  flex: 1;
+  width: 25%;
+  background: $historyLightGreen;
+}
+
+.bar-aqua {
+  flex: 1;
+  width: 25%;
+  background: $historyAqua;
+}
+
+// BUTTON AND BADGE TEXT WRAP FIX
+.text-wrap {
+  white-space: normal;
+}
+
+//TYPOGRAPHY
+
+h2{
+  font-size: 140%;
+}
+
+h5{
+  font-size: 120%;
+}
+
+p {
+  font-size: 120%;
+}
+
+.detailPara {
+  margin-bottom: 10px;
+}
+
+.map-pin {
+  color: $historyDarkAqua;
+  &:hover {
+    color: $historyAqua;
+  }
+}

@@ -1,0 +1,66 @@
+<div class="container">
+  <div
+    *ngFor="let event of events$ | async | EventsPipe: regionSelected: sortField: sortDirection: showFeaturedEvents;  let i = index"
+    class="row card border-dark mb-3">
+    <div class="card-header">
+      <h2 class="card-title m-0">
+        <span class="event-title">{{event.title}}</span>
+        <span *ngIf="event.featuredEvent === 'TRUE'" class="badge badge-featured mt-2 mr-2">
+        <i class="fa fa-star"></i>
+        Featured Event
+      </span>
+        <span *ngIf="regionSelected === null"
+              class="badge badge-dark mt-sm-2 float-right">
+        {{event.region}}
+      </span>
+      </h2>
+    </div>
+    <div class="bar-container" style="width:100%;">
+      <div class="col bar-green"></div>
+      <div class="col bar-aqua"></div>
+      <div class="col bar-burgundy"></div>
+      <div class="col bar-purple"></div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3 order-2 order-sm-1 text-md-center align-self-center">
+          <div class="alert alert-grey p-4">
+            <h5>
+              {{event.dayOfWeek}}<br>
+              {{event.date | date: 'dd MMMM'}}
+            </h5>
+            <p *ngIf="event.startTime !== 'blank' && event.endTime !== 'blank'">
+              {{event.startTime + ' to ' + event.endTime}}
+            </p>
+
+            <a href="{{event.bookingUrl}}" (click)="registerClick('Button Click', 'Book Now Button', event.title)"
+               target="_blank" class="btn btn-purple btn-block"
+               *ngIf="event.bookingUrl !== 'blank'">Book Now</a>
+            <a href="{{event.moreInfoUrl}}" (click)="registerClick('Button Click', 'More Info Button', event.title)"
+               target="_blank" class="btn btn-aqua btn-block"
+               *ngIf="event.moreInfoUrl !== 'blank'">More Info</a>
+          </div>
+        </div>
+        <div class="col-md-9 order-1 order-sm-2">
+          <p class="detailPara">
+            <strong>Hosted by:</strong> {{event.host}}
+          </p>
+          <p class="detailPara">
+            <strong>Cost:</strong> {{event.cost}}
+          </p>
+          <p class="detailPara">
+            <strong>Location:</strong>
+            {{event.location}}
+            <a class="map-pin" href="https://www.google.com.au/maps/place/{{event.location}}" target="_blank">
+                <span class="fa-stack"><i class="fa fa-square-o fa-stack-2x"></i><i
+                  class="fa fa-map-marker fa-stack-1x"></i></span>
+            </a>
+          </p>
+          <p>
+            {{event.blurb}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

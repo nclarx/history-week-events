@@ -1,0 +1,75 @@
+<img id="top" class="img-fluid ml-auto mr-auto align-self-center"
+     src="../assets/historyWeekBannerLarge.jpg">
+<div style="border-bottom: solid #000 6px;" class="header-divider container-fluid backgroundDarkAqua p-2">
+  <div class="container">
+    <h5 class="text-light text-center m-0">
+      Attended an event? Help us improve History Week
+      <a (click)="registerClick('Button Click', 'Take Survey Button')" href="http://bit.ly/HW17survey" target="_blank"
+         class="btn btn-purple">
+        Take Survey
+      </a>
+    </h5>
+  </div>
+</div>
+<div style="background: #333;" class="container-fluid mb-4">
+  <div class="container">
+    <div class="filterWrapper row justify-content-center align-items-center">
+      <div class="col-12">
+        <div class="form-group">
+          <label>Filter By Region</label>
+          <div class="row">
+            <div class="col-sm-6 mb-2">
+              <div class="input-group">
+                <select (change)="registerFilterChange('Region Filter Changes', regionSelected)"
+                        class="form-control"
+                        [(ngModel)]="regionSelected">
+                  <option [value]="null" [disabled]="true" selected>Select a region</option>
+                  <option *ngFor="let region of regions$ | async" value="{{region.$value}}">
+                    {{ region.$value}}
+                  </option>
+                </select>
+                <span class="input-group-btn">
+          <button class="btn btn-info" type="button" (click)="clearRegionFilter()">Clear</button>
+        </span>
+              </div>
+            </div>
+            <div class="col-sm-3 text-md-center">
+              <button class="btn btn-block btn-purple text-wrap"
+                      (click)="toggleFeaturedEvents()">
+                <i [ngClass]="showFeaturedEvents ? 'fa fa-inverse fa-star' : 'fa fa-star'"></i> {{ showFeaturedEvents ?
+                'Show All Events' : 'Show Only Featured Events' }}
+              </button>
+            </div>
+            <div class="col-sm-3 text-md-center">
+              <button class="btn btn-block btn-aqua text-wrap" (click)="toggleSortDirection()">
+                {{sortDirectionSelected ? 'Earliest to Latest' : 'Latest to Earliest'}}
+                <i [ngClass]="sortDirectionSelected ? 'fa fa-caret-up' : 'fa fa-caret-down'"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mb-4">
+  <h2 *ngIf="regionSelected !== null">Showing History Week 2017 - {{ regionSelected }}</h2>
+</div>
+<app-event [regionSelected]="regionSelected"
+           [sortDirection]="sortDirectionSelected"
+           [showFeaturedEvents]="showFeaturedEvents">
+</app-event>
+<div class="container text-center mb-4">
+  <a class="btn btn-aqua" href="#top">
+    Return to top <i class="fa fa-caret-up"></i>
+  </a>
+</div>
+<footer class="footer-divider p-4">
+  <p class="text-center">
+    <a href="http://www.historycouncilnsw.org.au">History Council NSW</a> &copy; 2017
+  </p>
+  <p class="text-center">
+    Designed by <a href="mailto:nick@clarx.com.au">Clarx</a>
+  </p>
+</footer>
